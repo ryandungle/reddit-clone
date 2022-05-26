@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import Post from '../../components/Post'
 import { GET_POST_BY_POST_ID } from '../../graphql/queries'
-import { useForm } from 'react-hook-form'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import { ADD_COMMENT } from '../../graphql/mutations'
 import toast from 'react-hot-toast'
 import Avatar from '../../components/Avatar'
@@ -21,7 +21,7 @@ export default function PostPage() {
     reset,
     watch,
     formState: { errors },
-  } = useForm()
+  } = useForm<FormData>()
   const { data: session } = useSession()
   const {
     query: { postId },
@@ -36,7 +36,7 @@ export default function PostPage() {
   })
   const post: Post = data?.getPostByPostId
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
     const notification = toast.loading('Posting your comment...')
     await addComment({
       variables: {
