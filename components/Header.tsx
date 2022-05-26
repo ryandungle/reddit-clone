@@ -25,7 +25,7 @@ export default function Header() {
       <div className=" relative h-10 w-20">
         <Link href="/">
           <Image
-            src="https://links.papareact.com/fqy"
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/5/58/Reddit_logo_new.svg/2560px-Reddit_logo_new.svg.png"
             layout="fill"
             objectFit="contain"
           />
